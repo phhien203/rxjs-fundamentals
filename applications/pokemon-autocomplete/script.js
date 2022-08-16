@@ -23,11 +23,11 @@ import {
 } from '../pokemon/utilities';
 
 const search$ = fromEvent(search, 'input').pipe(
-  debounceTime(300),
+  debounceTime(1000),
   map((event) => event.target.value),
   // distinctUntilChanged(),
   switchMap((searchTerm) =>
-    fromFetch(endpoint + searchTerm + '?delay=5000&chaos=true').pipe(
+    fromFetch(endpoint + searchTerm + '?delay=500&chaos=true').pipe(
       mergeMap((response) => response.json()),
     ),
   ),
